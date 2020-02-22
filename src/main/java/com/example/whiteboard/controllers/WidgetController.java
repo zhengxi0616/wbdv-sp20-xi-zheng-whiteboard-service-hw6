@@ -48,12 +48,6 @@ public class WidgetController {
         return service.findWidgetsForTopic(topicId);
     }
 
-    @GetMapping("/w1")
-    public Widget getWidget() {
-        Widget w1 = new Widget("123", "Widget A", "PARAGRAPH");
-        return w1;
-    }
-
     @GetMapping("/")
     public String sayHello() {
         return "Hello World";
