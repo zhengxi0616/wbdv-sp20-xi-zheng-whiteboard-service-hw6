@@ -1,35 +1,47 @@
 package com.example.whiteboard.models;
 
-public class Widget {
-    private String name;
-    private String id;
-    private String type = "Heading";
-    private String topicId;
-    private Integer order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-    private Integer size;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "widgets")
+public class Widget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String title = "New Widget";
+    private String type;
+    private String name;
+    private int order;
     private String text;
-    private String src;
-    private Integer width;
-    private Integer height;
+    private String url;
+    private int size;
+    private int width;
+    private int height;
     private String cssClass;
     private String style;
     private String value;
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getType() {
@@ -40,28 +52,20 @@ public class Widget {
         this.type = type;
     }
 
-    public String getTopicId() {
-        return topicId;
+    public String getName() {
+        return name;
     }
 
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getOrder() {
+    public int getOrder() {
         return order;
     }
 
-    public void setOrder(Integer order) {
+    public void setOrder(int order) {
         this.order = order;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public void setSize(Integer size) {
-        this.size = size;
     }
 
     public String getText() {
@@ -72,27 +76,35 @@ public class Widget {
         this.text = text;
     }
 
-    public String getSrc() {
-        return src;
+    public String getUrl() {
+        return url;
     }
 
-    public void setSrc(String src) {
-        this.src = src;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public Integer getWidth() {
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getWidth() {
         return width;
     }
 
-    public void setWidth(Integer width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 
-    public Integer getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
@@ -120,13 +132,11 @@ public class Widget {
         this.value = value;
     }
 
-    public Widget(String name, String id, String type, String value, Integer size) {
-        this.name = name;
-        this.id = id;
-        this.type = type;
-        this.value = value;
-        this.size = size;
+    public Topic getTopic() {
+        return topic;
     }
-    public Widget(){
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 }

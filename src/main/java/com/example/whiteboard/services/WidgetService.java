@@ -10,27 +10,6 @@ import java.util.stream.Collectors;
 public class WidgetService {
     List<Widget> widgetList = new ArrayList<Widget>();
 
-    {
-        Widget w1 = new Widget("123", "WA", "HEADING","New Content", 2);
-        Widget w2 = new Widget("234", "WB", "PARAGRAPH","New Content",2);
-        Widget w3 = new Widget("345", "WC","HEADING","New Content",3);
-        Widget w4 = new Widget("456", "WD", "PARAGRAPH","New Content",6);
-        Widget w5 = new Widget("567", "WE","HEADING","New Content",1);
-
-        w1.setTopicId("111");
-        w2.setTopicId("111");
-
-        w3.setTopicId("222");
-        w4.setTopicId("222");
-        w5.setTopicId("222");
-
-        widgetList.add(w1);
-        widgetList.add(w2);
-        widgetList.add(w3);
-        widgetList.add(w4);
-        widgetList.add(w5);
-    }
-
     public List<Widget> findAllWidgets() {
         return widgetList;
     }
