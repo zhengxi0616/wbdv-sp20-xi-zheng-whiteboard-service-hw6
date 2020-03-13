@@ -1,4 +1,5 @@
 package com.example.whiteboard.repositories;
+import com.example.whiteboard.models.Topic;
 import com.example.whiteboard.models.Widget;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -18,9 +19,7 @@ public interface WidgetRepository
 //        @Query("SELECT widget FROM Widget widget")
 //        public List<Widget> findAllWidgets();
 
-        // "SELECT * FROM widgets WHERE topic_id=topicId
-//    @Query(value = "SELECT * FROM widgets WHERE topic_id=:tid", nativeQuery = true)
-//        @Query("select widget from Widget widget where widget.topic.id=:tid")
-//        public List<Widget> findWidgetsForTopic(
-//        @Param("tid") int topicId);
+        @Query(value = "SELECT * FROM widgets WHERE widgets.topic_id=:topicId", nativeQuery = true)
+        public List<Widget> findWidgetsForTopic(@Param("topicId") int topicId);
+
 }
