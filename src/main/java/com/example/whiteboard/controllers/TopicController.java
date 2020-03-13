@@ -20,7 +20,7 @@ public class TopicController {
             @RequestBody Topic newTopic
     ) {
         newTopic.setLessonId(lessonId);
-        return topicService.createTopic(newTopic);
+        return topicService.createTopic(lessonId,newTopic);
     }
 
     @GetMapping("/api/lessons/{lessonId}/topics")
