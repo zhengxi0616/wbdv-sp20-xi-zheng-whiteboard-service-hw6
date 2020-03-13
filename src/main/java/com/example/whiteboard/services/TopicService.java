@@ -1,6 +1,5 @@
 package com.example.whiteboard.services;
 
-
 import com.example.whiteboard.models.Topic;
 import com.example.whiteboard.models.Widget;
 import com.example.whiteboard.repositories.TopicRepository;
@@ -36,17 +35,10 @@ public class TopicService {
         topicRepository.save(newTopic);
         return 1;
     }
-
-    public Topic createTopic(Topic newTopic) {
-        return topicRepository.save(newTopic);
-    }
-
-    public Widget createWidgetForTopic(
-            Integer tid,
-            Widget newWidget) {
-        Topic topic = topicRepository.findById(tid).get();
-        newWidget.setTopic(topic);
-        return widgetRepository.save(newWidget);
+    
+    public Topic createTopic(String lid, Topic topic){
+        topic.setLessonId(lid);
+        return topicRepository.save(topic);
     }
 
     public List<Topic> findTopicsForLesson(String lessonId) {
