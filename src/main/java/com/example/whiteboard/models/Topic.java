@@ -11,6 +11,8 @@ public class Topic {
 
     private Integer id;
     private String title;
+    private String description;
+    private String lessonId;
 
     public Integer getId() {
         return id;
@@ -52,8 +54,7 @@ public class Topic {
         this.widgets = widgets;
     }
 
-    private String description;
-    private String lessonId;
+
 
     @OneToMany(mappedBy = "topic")
     private List<Widget> widgets;
